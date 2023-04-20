@@ -11,7 +11,9 @@ pipeline {
                 sh 'echo "xx"'
                 sh 'pwd'
                 sh 'ls'
-                sh 'cd fluxedu'
+                dir('fluxedu') {
+                      sh "pwd"
+                    }
                 sh 'ls'
                 sh './fluxedu/gradlew clean build'
             }
