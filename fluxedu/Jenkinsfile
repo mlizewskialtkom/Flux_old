@@ -13,14 +13,14 @@ pipeline {
                 sh 'ls'
                 sh 'cd fluxedu'
                 sh 'ls'
-                sh './gradlew clean build'
+                sh './fluxedu/gradlew clean build'
             }
         }
         stage('test'){
             steps{
                 //run app tests using gradle
                 sh 'cd fluxedu'
-                sh './gradlew test'
+                sh './fluxedu/gradlew test'
             }
         }
     }
