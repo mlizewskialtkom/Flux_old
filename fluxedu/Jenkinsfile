@@ -1,8 +1,8 @@
 pipeline {
     agent any
-    tools {
-            jdk 'Java17'
-    }
+//     tools {
+//             jdk 'Java17'
+//     }
     stages{
         stage('Checkout') {
             steps {
@@ -13,24 +13,22 @@ pipeline {
             steps {
                 sh 'java --version'
             }
-        }        
-        stage('build'){
-            steps{
-                sh 'echo "xx"'
-                sh 'pwd'
-                sh 'ls'
-                dir('fluxedu') {
-                      sh "pwd"
-                      sh 'ls'
-                      sh './gradlew clean build'
-                }
-            }
         }
         stage('test'){
             steps{
                 //run app tests using gradle
-                sh 'cd fluxedu'
-                sh './fluxedu/gradlew test'
+                dir('fluxedu') {
+                      sh "pwd"
+                      sh './gradlew test'
+                }
+            }
+        }
+        stage('build'){
+            steps{
+                dir('fluxedu') {
+                      sh "pwd"
+                      sh './gradlew clean build'
+                }
             }
         }
     }
