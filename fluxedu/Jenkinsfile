@@ -1,19 +1,27 @@
-pipeline{
-//pobierz kod z githuba
-agent any
+pipeline {
+    agent any
+    stages{
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('build'){
+            steps{
+                sh './gradlew clean build'
+            }
+        }
+        stage('test'){
+            steps{
+                //run app tests using gradle
+                sh './gradlew test'
+            }
+        }
+    }
 
-stages{
-stage('test'){
-steps{
-//run app tests using gradle
-sh './gradlew test'
-}
-}
-//wypisz na konsolę 'Sukces' po pomyślnym wykonaniu testów
-post{
-success{
-echo 'Sukces'
-}
-}
-
+    post{
+        success{
+            echo 'Sukces'
+        }
+    }
 }
