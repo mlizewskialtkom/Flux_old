@@ -16,7 +16,6 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -64,8 +63,6 @@ public class FluxClientController {
                 .retrieve()
                 .bodyToMono(StudentDto.class);
     }
-
-    // create new get mapping method for path "/nowa-metoda"
 
 
 

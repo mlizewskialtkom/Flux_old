@@ -53,4 +53,17 @@ public class FluxController {
         Thread.sleep(generatedLong);
         return studentRepo.findById(id).log();
     }
+
+    // zapisz Nowego studenta do bazy
+    @GetMapping("/add/{name}")
+    public Mono<Student> addStudent(@PathVariable String name) throws InterruptedException {
+        Student student = new Student(name, new Random().nextInt(100));
+        return studentRepo.save(student).log();
+    }
+
+//    //pobierz studenta po polu name
+//    @GetMapping("/get/{name}")
+//    public Mono<Student> getStudentByName(@PathVariable String name) throws InterruptedException {
+//        return studentRepo.findByName(name);
+//    }
 }

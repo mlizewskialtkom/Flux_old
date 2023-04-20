@@ -1,0 +1,19 @@
+pipeline{
+//pobierz kod z githuba
+agent any
+
+stages{
+stage('test'){
+steps{
+//run app tests using gradle
+sh './gradlew test'
+}
+}
+//wypisz na konsolę 'Sukces' po pomyślnym wykonaniu testów
+post{
+success{
+echo 'Sukces'
+}
+}
+
+}
