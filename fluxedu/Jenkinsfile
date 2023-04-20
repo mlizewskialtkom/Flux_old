@@ -13,9 +13,9 @@ pipeline {
                 sh 'ls'
                 dir('fluxedu') {
                       sh "pwd"
-                    }
-                sh 'ls'
-                sh './fluxedu/gradlew clean build'
+                      sh 'ls'
+                      sh './gradlew clean build'
+                }
             }
         }
         stage('test'){
